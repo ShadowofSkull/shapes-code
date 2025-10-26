@@ -1,0 +1,32 @@
+// Database configuration
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Admin users table
+model Admin {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique @db.VarChar(50)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  createdAt    DateTime @default(now()) @map("created_at")
+  
+  @@map("admins")
+}
+
+// Shapes table
+model Shape {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  color     String   @db.VarChar(10)  // 'red', 'blue', 'green', 'yellow'
+  shape     String   @db.VarChar(10)  // 'circle', 'square', 'triangle'
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("shapes")
+  @@index([createdAt(sort: Desc)])
+}
