@@ -9,7 +9,7 @@ import { shapeSchema } from '@/lib/validations';
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   console.log(`✏️ PUT /api/shapes/${id} - Updating shape`);
@@ -69,7 +69,7 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const {id} = await params;
   console.log(`🗑️ DELETE /api/shapes/${id} - Deleting shape`);
