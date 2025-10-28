@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('❌ Error fetching shapes:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to fetch shapes' },
+      { success: false, error: {error} },
       { status: 500 }
     );
   }
