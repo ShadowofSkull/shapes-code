@@ -78,6 +78,26 @@ npm run dev
 
 Visit: http://localhost:3000
 
+## 🚀 Deployment
+
+This application is deployed on AWS Amplify and connected to an AWS RDS (MySQL) instance.
+
+The database is managed with Prisma ORM, and migrations were applied directly to RDS before deployment.
+
+1. Build and deploy process:
+
+2. Provisioned RDS in AWS, enabled public access, and configured security groups.
+   
+3. Connected GitHub repository to AWS Amplify Hosting for automatic CI/CD.
+   
+4. Added environment variables in Amplify Console to securely connect the app to RDS.
+   
+5. Ran Prisma migrations and seed to initialize database schema.
+   
+6.  Deployed the Next.js app via Amplify build pipeline using npm run build.
+
+---
+
 ## 📂 Project Structure
 ```
 favorite-shapes/
